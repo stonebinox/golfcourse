@@ -47,6 +47,7 @@ class courseMaster
         $app=$this->app;
         if($this->courseValid)
         {
+            $courseID=$this->course_id;
             $cm="SELECT * FROM course_master WHERE idcourse_master='$courseID'";
             $cm=$app['db']->fetchAssoc($cm);
             if(($cm!="")&&($cm!=NULL))
