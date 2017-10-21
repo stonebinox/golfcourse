@@ -64,30 +64,37 @@ class courseMaster
             return "INVALID_COURSE_ID";
         }
     }
-    function getCourses() //to get all course rows
+    function getCourses($offset=0) //to get all course rows
     {
         $app=$this->app;
-        $cm="SELECT idcourse_master FROM course_master WHERE stat='1' ORDER BY idcourse_master DESC";
-        $courseArray=array();
-        while($row=$app['db']->fetchAssoc($cm))
+        $offset=addslashes(htmlentities($offset));
+        if((is_numeric($offset))&&($offset!="")&&($offset!=NULL))
         {
-            $courseID=$row['idcourse_master'];
-            $this->__construct($courseID);
-            $course=$this->getCourse();
-            if(is_array($course))
+            $cm="SELECT idcourse_master FROM course_master WHERE stat='1' ORDER BY idcourse_master DESC LIMIT $offset,100";
+            $courseArray=array();
+            while($row=$app['db']->fetchAssoc($cm))
             {
-                array_push($courseArray,$course);
+                $courseID=$row['idcourse_master'];
+                $this->__construct($courseID);
+                $course=$this->getCourse();
+                if(is_array($course))
+                {
+                    array_push($courseArray,$course);
+                }
             }
-        }
-        if(count($courseArray)>0)
-        {
-            return $courseArray;
+            if(count($courseArray)>0)
+            {
+                return $courseArray;
+            }
+            else
+            {
+                return "NO_COURSES_FOUND";
+            }
         }
         else
         {
-            return "NO_COURSES_FOUND";
+            return "INVALID_OFFSET_VALUE";
         }
-        
     }
     function searchCourses($searchText) //to search for courses
     {
