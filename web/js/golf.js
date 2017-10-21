@@ -26,9 +26,11 @@ app.controller("map",function($scope,$compile){
         $scope.center=new google.maps.LatLng(latitude, longitude);
         var mapOptions = {
             center: $scope.center,
-            zoom: 10,
+            zoom: 13,
             mapTypeId: google.maps.MapTypeId.ROAD
         }
         $scope.map = new google.maps.Map(document.getElementById("mapcontent"), mapOptions);
+        var marker = new google.maps.Marker({position: $scope.center});
+        marker.setMap($scope.map);
     };
 });
