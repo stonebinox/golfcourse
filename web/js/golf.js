@@ -63,4 +63,13 @@ app.controller("map",function($scope,$compile,$http){
             }
         }
     };
+    $scope.searchCourses=function(){
+        var search=$.trim($scope.courseSearch);
+        if(search!=""){
+            console.log(search);
+        }
+        else{
+            //show error
+        }
+    };
 });
