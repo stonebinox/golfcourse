@@ -1,6 +1,6 @@
 <?php
 
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -30,7 +30,7 @@ $app->get('/',function() use($app){
 });
 
 $app->get('/map',function() use($app){
-    return $app['twig']->render('index.twig'); 
+    return $app['twig']->render('index.html.twig'); 
 });
 
 $app->get('/getCourses',function() use($app){
