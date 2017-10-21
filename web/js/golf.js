@@ -16,6 +16,7 @@ app.controller("map",function($scope,$compile,$http){
     $scope.getUserCurrentLocation=function(){
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition($scope.showPosition);
+            $scope.getCourses();
         } else {
             //show error
         }
