@@ -25,7 +25,7 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
       'dbname' => 'heroku_db2',
       'user' => 'root',
       'password' => 'adminspin#123',
-      'host'=> "40.115.53.137",
+      'host'=> "cloud.spectralinsights.com",
     )
   ));
 
