@@ -1,6 +1,6 @@
 <?php
 
-ini_set('display_errors', 0);
+ini_set('display_errors', 1);
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -28,5 +28,20 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
 $app->get('/',function() use($app){
     return $app['twig']->render('index.twig'); 
 });
+
+$app->get('/getCourses',function() use($app){
+    require("../classes/courseMaster.php");
+    $courseObj=new courseMaster;
+    $courses=$courseObj->getCourses();
+    if(is_array($courses))
+    {
+        return json_encode($courses);
+    }
+    else
+    {
+        return $courses;
+    }
+});
+
 
 $app->run();

@@ -67,13 +67,75 @@ class courseMaster
     {
         $app=$this->app;
         $cm="SELECT idcourse_master FROM course_master WHERE stat='1' ORDER BY idcourse_master DESC";
+        $courseArray=array();
         while($row=$app['db']->fetchAssoc($cm))
         {
             $courseID=$row['idcourse_master'];
             $this->__construct($courseID);
             $course=$this->getCourse();
+            if(is_array($course))
+            {
+                array_push($courseArray,$course);
+            }
+        }
+        if(count($courseArray)>0)
+        {
+            return $courseArray;
+        }
+        else
+        {
+            return "NO_COURSES_FOUND";
         }
         
+    }
+    function searchCourses($searchText) //to search for courses
+    {
+        $app=$this->app;
+        $searchText=trim(addslashes(htmlentities($searchText)));
+        if(($searchText!="")&&($searchText!=NULL))
+        {
+            if(strpos($searchText," ")==false)
+            {
+                $cm="SELECT idcourse_master FROM course_master WHERE stat='1' AND course_name LIKE '%$searchText%'";
+            }
+            else{
+                $e=explode(" ",$searchText);
+                $cm="SELECT idcourse_master FROM course_master WHERE stat='1' AND ";
+                for($i=0;$i<count($e);$i++)
+                {
+                    $word=$searchText[$i];
+                    $cm.="course_name LIKE '%$word%'";
+                    if(($i+1)<count($e))
+                    {
+                        $cm.=" AND ";
+                    }
+                }
+            }
+            $cm.=" ORDER BY idcourse_master DESC";
+            $courseArray=array();
+            while($row=$app['db']->fetchAssoc($cm))
+            {
+                $courseID=$row['idcourse_master'];
+                $this->__construct($courseID);
+                $course=$this->getCourse();
+                if(is_array($course))
+                {
+                    array_push($courseArray,$course);
+                }
+            }
+            if(count($courseArray)>0)
+            {
+                return $courseArray;
+            }
+            else
+            {
+                return "NO_COURSES_FOUND";
+            }
+        }
+        else
+        {
+            return "INVALID_SEARCH_TEXT";
+        }
     }
 }
 ?>
