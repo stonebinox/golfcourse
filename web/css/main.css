@@ -54,8 +54,8 @@ h1{
 #searchbar{
     position:fixed;
     z-index:4;
-    top:15%;
-    left:5%;
+    top:17%;
+    left:1%;
     width:25%;
     height:auto;
 }
