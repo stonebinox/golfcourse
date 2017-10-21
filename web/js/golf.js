@@ -1,6 +1,6 @@
 var app=angular.module("golf",[]);
 app.controller("map",function($scope,$compile,$http){
-    $scope.locationArray=[];
+    $scope.courseArray=[];
     $scope.center=new google.maps.LatLng(51.5, -0.12);
     $scope.map=null;
     $scope.initMap=function(){
@@ -38,7 +38,14 @@ app.controller("map",function($scope,$compile,$http){
         $http.get("getCourses")
         .then(function success(response){
             if((response!="")&&(response!=null)&&(response!=undefined)){
-                console.log(response);
+                if(response=="NO_COURSES_FOUND"){
+                    //do nothing
+                }
+                else{
+                    response=JSON.parse(response);
+                    $scope.courseArray=response.slice();  
+                    $scope.showCourses();
+                }
             }
             else{
                 messageBox("Problem","Something went wrong while loading courses. Please try again later.");
@@ -47,5 +54,13 @@ app.controller("map",function($scope,$compile,$http){
             console.log(response);
             messageBox("Problem","Something went wrong while loading courses. Please try again later. This is the error we see: "+response);
         });
+    };
+    $scope.showCourses=function(){
+        if($scope.courseArray.length>0){
+            for(var i=0;$scope.courseArray.length;i++){
+                var course=$scope.courseArray[i];
+                
+            }
+        }
     };
 });
