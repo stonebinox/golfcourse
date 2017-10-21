@@ -26,6 +26,10 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
   ));
 
 $app->get('/',function() use($app){
+    return $app->redirect('/map');
+});
+
+$app->get('/map',function() use($app){
     return $app['twig']->render('index.twig'); 
 });
 
