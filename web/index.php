@@ -19,14 +19,13 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/views',
 ));
 
-$dbURL = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => array(
       'driver' => 'pdo_mysql',
       'dbname' => 'heroku_bc01d6c27e92b76',
       'user' => 'ba53d3edafdd3c',
       'password' => '04a69937',
-      'host'=> $dbURL["host"],
+      'host'=> "us-cdbr-iron-east-05.cleardb.net",
     )
   ));
 
