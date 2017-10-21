@@ -22,7 +22,9 @@
         "symfony/translation": "~2.8|^3.0",
         "symfony/twig-bridge": "~2.8|^3.0",
         "symfony/validator": "~2.8|^3.0",
-        "ext-mbstring": "*"
+        "ext-mbstring": "*",
+        "doctrine/dbal": "^2.5",
+        "monolog/monolog": "^1.22"
     },
     "autoload": {
         "psr-0": { "": "src/" }
