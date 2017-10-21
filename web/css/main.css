@@ -1,0 +1,53 @@
+@font-face{
+	font-family: Narrow;
+	src:url(HelveticaNarrow.ttf);
+}
+#body{
+    position:fixed;
+    z-index:1;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background:url(../images/ep_naturalblack.png);
+}
+#footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:5%;
+    background: url(../images/dust-power.png) no-repeat center;
+    -webkit-background-size:contain;
+    -moz-background-size:contain;
+    background-size:contain;
+    z-index:2;
+}
+#header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:10%;
+    /*background:url(../images/dust-power.png) no-repeat center;
+    -webkit-background-size:contain;
+    -moz-background-size:contain;
+    background-size:contain;*/
+    z-index:4;
+    overflow:none;
+}
+h1{
+    font-family: Narrow;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+#map{
+    width:100%;
+    height:85%;
+    position:fixed;
+    top:10%;
+    height:85%;
+    left:0;
+    width:100%;
+    z-index:3;
+}

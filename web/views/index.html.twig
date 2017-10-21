@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+<body ng-app="golf">
+    <div id="body"></div>
+    <div id="header">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Golf Course Finder</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Products <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Product 1</a></li>
+                            <li><a href="#">Product 2</a></li>
+                            <li><a href="#">Product 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            </nav>
+        </div>
+    <div id="map" ng-controller="map" ng-init="initMap()">
+        <div id="mapcontent"></div>
+    </div>
+    <div id="footer"></div>
+</body>
+{% endblock %}
