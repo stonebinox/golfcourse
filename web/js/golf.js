@@ -44,7 +44,7 @@ app.controller("map",function($scope,$compile,$http){
                 messageBox("Problem","Something went wrong while loading courses. Please try again later.");
             }
         }, function(response){
-            messageBox("Problem","Something went wrong while loading courses. Please try again later.");
+            messageBox("Problem","Something went wrong while loading courses. Please try again later. This is the error we see: "+response);
         });
     };
 });
