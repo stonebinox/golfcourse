@@ -1,4 +1,4 @@
-# Golf Course Finder #
+# Golf Course Finder
 
 This application is to help you find nearby golf courses on a map. Recommended gold products are also suggested.
 
