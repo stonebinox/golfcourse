@@ -22,10 +22,10 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => array(
       'driver' => 'pdo_mysql',
-      'dbname' => 'heroku_bc01d6c27e92b76',
+      'dbname' => 'heroku_db2',
       'user' => 'root',
       'password' => 'adminspin#123',
-      'host'=> "localhost",
+      'host'=> "cloud.spectralinsights.com",
     )
   ));
 
