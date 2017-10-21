@@ -22,11 +22,11 @@
             </div>
         </nav>
     </div>
-    <div id="map" ng-controller="map" ng-init="initMap();getUserCurrentLocation();">
+    <div id="map" ng-controller="map" ng-init="initMap();getUserCurrentLocation();courseSearch='';">
         <div id="searchbar">
             <form name="coursesearch">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Type to start searching" name="coursesearch" ng-model="coursesearch">
+                    <input type="text" class="form-control" placeholder="Type to start searching" name="coursesearch" ng-model="courseSearch">
                 </div>
             </form>
         </div>
