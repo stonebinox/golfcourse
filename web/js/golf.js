@@ -35,7 +35,7 @@ app.controller("map",function($scope,$compile,$http){
         marker.setMap($scope.map);
     };
     $scope.getCourses=function(){
-        $http.get("/getCourses")
+        $http.get("getCourses")
         .then(function success(response){
             if((response!="")&&(response!=null)&&(response!=undefined)){
                 console.log(response);
