@@ -16,9 +16,9 @@ app.controller("map",function($scope,$compile,$http){
     $scope.getUserCurrentLocation=function(){
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition($scope.showPosition);
-            //$scope.getCourses();
+            $scope.getCourses();
         } else {
-            //show error
+            messageBox("No Location Found","Seems like your browser doesn't support fetching locations.");
         }
     };
     $scope.showPosition=function(position) {
