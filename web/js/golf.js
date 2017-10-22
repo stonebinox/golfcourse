@@ -1,6 +1,32 @@
 window.onload=function(){
-    angular.element(document.getElementById('map')).scope().getCourses();
+    getCourses();
 };
+function getCourses(){
+    var dt=new Date().getTime();
+    $.ajax({
+        url:"getCourses",
+        method: "GET",
+        error: function(xhr,stat,err){
+            messageBox("Problem","Something went wrong while getting courses. Please try again in a bit. This is the error we see: "+err,0);
+        },
+        success:function(responseText){
+            console.log(responseText);
+            if((responseText!="")&&(responseText!=null)&&(responseText!=undefined)&&(responseText!="INVALID_PARAMETERS")){
+                if(responseText=="NO_COURSES_FOUND"){
+
+                }
+                else{
+                    responseText=JSON.parse(responseText);
+                    //$scope.courseArray=responseText.slice();  
+                    //$scope.showCourses();
+                }
+            }
+            else{
+                messageBox("Problem","Something went wrong while getting courses. Please try again in a bit. This is the error we see: "+err,0);
+            }
+        }
+    });
+}
 var app=angular.module("golf",[]);
 app.controller("map",function($scope,$compile,$http){
     var courseArray=[];
@@ -37,30 +63,7 @@ app.controller("map",function($scope,$compile,$http){
         marker.setMap($scope.map);
     };
     $scope.getCourses=function(){
-        var dt=new Date().getTime();
-        $.ajax({
-            url:"getCourses",
-            method: "GET",
-            error: function(xhr,stat,err){
-                messageBox("Problem","Something went wrong while getting courses. Please try again in a bit. This is the error we see: "+err,0);
-            },
-            success:function(responseText){
-                console.log(responseText);
-                if((responseText!="")&&(responseText!=null)&&(responseText!=undefined)&&(responseText!="INVALID_PARAMETERS")){
-                    if(responseText=="NO_COURSES_FOUND"){
-
-                    }
-                    else{
-                        responseText=JSON.parse(responseText);
-                        $scope.courseArray=responseText.slice();  
-                        $scope.showCourses();
-                    }
-                }
-                else{
-                    messageBox("Problem","Something went wrong while getting courses. Please try again in a bit. This is the error we see: "+err,0);
-                }
-            }
-        });
+        
     };
     $scope.showCourses=function(){
         if($scope.courseArray.length>0){
