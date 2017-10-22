@@ -1,4 +1,6 @@
 var courseArray=[];
+var center=new google.maps.LatLng(51.5, -0.12);
+var map=null;
 window.onload=function(){
     getCourses();
 };
@@ -18,7 +20,7 @@ function getCourses(){
                 }
                 else{
                     responseText=JSON.parse(responseText);
-                    courseArray=responseText.slice();  
+                    courseArray=responseText;  
                     showCourses();
                 }
             }
@@ -33,58 +35,48 @@ function showCourses(){
         console.log(courseArray);
         for(var i=0;courseArray.length;i++){
             var course=courseArray[i];
+            var courseID=course.idcourse_master;
+            var courseName=course.course_name;
 
         }
     }
 }
-var app=angular.module("golf",[]);
-app.controller("map",function($scope,$compile,$http){
-    var courseArray=[];
-    $scope.center=new google.maps.LatLng(51.5, -0.12);
-    $scope.map=null;
-    $scope.initMap=function(){
-        var mapOptions = {
-            center: $scope.center,
-            zoom: 10,
-            mapTypeId: google.maps.MapTypeId.ROAD
-        };
-        $scope.map = new google.maps.Map(document.getElementById("mapcontent"), mapOptions);
-        var parentHeight=document.getElementById("map").offsetHeight;
-        $("#mapcontent").css("height",parentHeight+"px");
+function initMap(){
+    var mapOptions = {
+        center: center,
+        zoom: 10,
+        mapTypeId: google.maps.MapTypeId.ROAD
     };
-    $scope.getUserCurrentLocation=function(){
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition($scope.showPosition);
-        } else {
-            messageBox("No Location Found","Seems like your browser doesn't support fetching locations.");
-        }
-    };
-    $scope.showPosition=function(position) {
-        var latitude=position.coords.latitude;
-        var longitude=position.coords.longitude;
-        $scope.center=new google.maps.LatLng(latitude, longitude);
-        var mapOptions = {
-            center: $scope.center,
-            zoom: 13,
-            mapTypeId: google.maps.MapTypeId.ROAD
-        }
-        $scope.map = new google.maps.Map(document.getElementById("mapcontent"), mapOptions);
-        var marker = new google.maps.Marker({position: $scope.center});
-        marker.setMap($scope.map);
-    };
-    $scope.getCourses=function(){
-        
-    };
-    $scope.showCourses=function(){
-        
-    };
-    $scope.searchCourses=function(){
-        var search=$.trim($scope.courseSearch);
-        if(search!=""){
-            console.log(search);
-        }
-        else{
-            //show error
-        }
-    };
-});
+    map = new google.maps.Map(document.getElementById("mapcontent"), mapOptions);
+    var parentHeight=document.getElementById("map").offsetHeight;
+    $("#mapcontent").css("height",parentHeight+"px");
+}
+function getUserCurrentLocation(){
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        messageBox("No Location Found","Seems like your browser doesn't support fetching locations.");
+    }
+}
+function showPosition(position){
+    var latitude=position.coords.latitude;
+    var longitude=position.coords.longitude;
+    center=new google.maps.LatLng(latitude, longitude);
+    var mapOptions = {
+        center: center,
+        zoom: 13,
+        mapTypeId: google.maps.MapTypeId.ROAD
+    }
+    map = new google.maps.Map(document.getElementById("mapcontent"), mapOptions);
+    var marker = new google.maps.Marker({position: center});
+    marker.setMap(map);
+}
+function searchCourses(val){
+    var search=$.trim(val);
+    if(search!=""){
+        console.log(search);
+    }
+    else{
+        //show error
+    }
+}
