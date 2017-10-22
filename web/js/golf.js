@@ -149,8 +149,8 @@ function getProducts(){
                 }
                 else{
                     responseText=JSON.parse(responseText);
-                    var ul=document.createElement("ul");
-                    $(ul).addClass("dropdown-menu");
+                    /*var ul=document.createElement("ul");
+                    $(ul).addClass("dropdown-menu");*/
                     for(var i=0;i<responseText.length;i++){
                         var product=responseText[i];
                         var productID=product.idproduct_master;
@@ -160,10 +160,10 @@ function getProducts(){
                         $(a).attr("href","#");
                         $(a).html(productName);
                         $(li).append(a);
-                        $(ul).append(li);
+                        $("#productlist").append(li);
                     }
-                    console.log(ul);
-                    $("#productlist").append(ul);
+                    //console.log(ul);
+                    //$("#productlist").append(ul);
                 }
             }
             else{
