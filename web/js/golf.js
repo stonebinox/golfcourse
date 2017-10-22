@@ -41,9 +41,7 @@ function showCourses(){
             var latitude=course.course_lat;
             var longitude=course.course_lon;
             var position=new google.maps.LatLng(latitude, longitude);
-            console.log(position);
-            //showPosition(position);
-
+            showPosition(position);
         }
     }
 }
