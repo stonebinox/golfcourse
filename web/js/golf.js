@@ -102,6 +102,8 @@ function searchCourses(val){
         $("#results").html('');
         if(searchResults.length>0){
             document.getElementById("results").setAttribute("open","true");
+            var div=document.createElement("div");
+            $(div).addClass("container");
             var ul=document.createElement("ul");
             $(ul).addClass("list-group");
             for(var i=0;i<searchResults.length;i++){
@@ -114,7 +116,8 @@ function searchCourses(val){
                 $(li).html(courseName);
                 $(ul).append(li);
             }
-            $("#results").append(ul);
+            $(div).append(ul);
+            $("#results").append(div);
         }
         else{
             $("#results").removeAttr("open");
