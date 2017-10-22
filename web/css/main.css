@@ -60,3 +60,11 @@ h1{
     width:25%;
     height:auto;
 }
+#results{
+    position:fixed;
+    width:25%;
+    height:0;
+}
+#results[open="true"]{
+    height:auto;
+}

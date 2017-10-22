@@ -91,9 +91,35 @@ function setMarker(position,content){
 function searchCourses(val){
     var search=$.trim(val);
     if(search!=""){
-        console.log(search);
+        var searchResults=[];
+        for(var i=0;i<courseArray.length;i++){
+            var course=courseArray[i];
+            var courseName=course.course_name;
+            if(courseName.indexOf(search)!=-1){
+                searchResults.push(i);                
+            }
+        }
+        if(searchResults.length>0){
+            document.getElementById("results").setAttribute("open","true");
+            var ul=document.createElement("ul");
+            $(ul).addClass("list-group");
+            for(var i=0;i<searchResults.length;i++){
+                var pos=searchResults[i];
+                var course=courseArray[pos];
+                var courseID=course.idcourse_master;
+                var courseName=course.course_name;
+                var li=document.createElement("li");
+                $(li).addClass("list_group_item");
+                $(li).html(courseName);
+                $(ul).append(li);
+            }
+            $("#results").append(ul);
+        }
+        else{
+            $("#results").removeAttr("open");
+        }
     }
     else{
-        //show error
+        $("#results").removeAttr("open");
     }
 }

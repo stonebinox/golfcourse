@@ -51,4 +51,18 @@ $app->get('/getCourses',function() use($app){
     }
 });
 
+$app->get('/searchCourses',function() use($app){
+    require("../classes/courseMaster.php");
+    $courseObj=new courseMaster;
+    $courses=$courseObj->searchCourses();
+    if(is_array($courses))
+    {
+        return json_encode($courses);
+    }
+    else
+    {
+        return $courses;
+    }
+});
+
 $app->run();

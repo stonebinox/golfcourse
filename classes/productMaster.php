@@ -26,9 +26,9 @@ class productMaster
         {
             $app=$this->app;
             $productID=$this->product_id;
-            $cm="SELECT idproduct_master FROM product_master WHERE stat='1' AND idproduct_master='$productID'";
-            $cm=$app['db']->fetchAssoc($cm);
-            if(($cm!="")&&($cm!=NULL))
+            $pm="SELECT idproduct_master FROM product_master WHERE stat='1' AND idproduct_master='$productID'";
+            $pm=$app['db']->fetchAssoc($pm);
+            if(($pm!="")&&($pm!=NULL))
             {
                 return true;
             }
@@ -47,11 +47,11 @@ class productMaster
         $app=$this->app;
         if($this->productValid)
         {
-            $cm="SELECT * FROM product_master WHERE idproduct_master='$productID'";
-            $cm=$app['db']->fetchAssoc($cm);
-            if(($cm!="")&&($cm!=NULL))
+            $pm="SELECT * FROM product_master WHERE idproduct_master='$productID'";
+            $pm=$app['db']->fetchAssoc($pm);
+            if(($pm!="")&&($pm!=NULL))
             {
-                return $cm;
+                return $pm;
             }
             else
             {
@@ -66,10 +66,11 @@ class productMaster
     function getProducts() //to get all product rows
     {
         $app=$this->app;
-        $cm="SELECT idproduct_master FROM product_master WHERE stat='1' ORDER BY idproduct_master DESC";
-        while($row=$app['db']->fetchAssoc($cm))
+        $pm="SELECT idproduct_master FROM product_master WHERE stat='1' ORDER BY idproduct_master DESC";
+        $pm=$app['db']->fetchAssoc($pm);
+        for($i=0;$i<count($pm);$i++)
         {
-            $productID=$row['idproduct_master'];
+            $productID=$pm['idproduct_master'];
             $this->__construct($productID);
             $product=$this->getProduct();
         }
