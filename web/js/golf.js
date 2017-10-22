@@ -1,3 +1,6 @@
+window.onload=function(){
+    angular.element(document.getElementById('map')).scope().getCourses();
+};
 var app=angular.module("golf",[]);
 app.controller("map",function($scope,$compile,$http){
     var courseArray=[];
@@ -32,7 +35,6 @@ app.controller("map",function($scope,$compile,$http){
         $scope.map = new google.maps.Map(document.getElementById("mapcontent"), mapOptions);
         var marker = new google.maps.Marker({position: $scope.center});
         marker.setMap($scope.map);
-        $scope.getCourses();
     };
     $scope.getCourses=function(){
         var dt=new Date().getTime();
