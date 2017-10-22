@@ -23,9 +23,9 @@ $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => array(
       'driver' => 'pdo_mysql',
       'dbname' => 'heroku_db2',
-      'user' => 'root',
+      'user' => 'remoteuser',
       'password' => 'adminspin#123',
-      'host'=> "cloud.spectralinsights.com",
+      'host'=> "40.115.53.137",
     )
   ));
 
