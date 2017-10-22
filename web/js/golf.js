@@ -1,3 +1,4 @@
+var courseArray=[];
 window.onload=function(){
     getCourses();
 };
@@ -13,12 +14,12 @@ function getCourses(){
             console.log(responseText);
             if((responseText!="")&&(responseText!=null)&&(responseText!=undefined)&&(responseText!="INVALID_PARAMETERS")){
                 if(responseText=="NO_COURSES_FOUND"){
-
+                    //do nothing
                 }
                 else{
                     responseText=JSON.parse(responseText);
-                    //$scope.courseArray=responseText.slice();  
-                    //$scope.showCourses();
+                    courseArray=responseText.slice();  
+                    showCourses();
                 }
             }
             else{
@@ -26,6 +27,15 @@ function getCourses(){
             }
         }
     });
+}
+function showCourses(){
+    if(courseArray.length>0){
+        console.log(courseArray);
+        for(var i=0;courseArray.length;i++){
+            var course=courseArray[i];
+
+        }
+    }
 }
 var app=angular.module("golf",[]);
 app.controller("map",function($scope,$compile,$http){
@@ -66,13 +76,7 @@ app.controller("map",function($scope,$compile,$http){
         
     };
     $scope.showCourses=function(){
-        if($scope.courseArray.length>0){
-            console.log($scope.courseArray);
-            for(var i=0;$scope.courseArray.length;i++){
-                var course=$scope.courseArray[i];
-
-            }
-        }
+        
     };
     $scope.searchCourses=function(){
         var search=$.trim($scope.courseSearch);
