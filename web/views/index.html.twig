@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<body ng-app="golf">
+<body>
     <div id="body"></div>
     <div id="header">
         <nav class="navbar navbar-default">
@@ -22,11 +22,11 @@
             </div>
         </nav>
     </div>
-    <div id="map" ng-controller="map" ng-init="initMap();getUserCurrentLocation();courseSearch='';">
+    <div id="map">
         <div id="searchbar">
             <form name="coursesearch">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Type to start searching" name="coursesearch" ng-model="courseSearch" ng-change="searchCourses()">
+                    <input type="text" class="form-control" placeholder="Type to start searching" name="coursesearch">
                 </div>
             </form>
         </div>

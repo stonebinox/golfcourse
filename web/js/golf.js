@@ -2,7 +2,8 @@ var courseArray=[];
 var center=new google.maps.LatLng(51.5, -0.12);
 var map=null;
 window.onload=function(){
-    getCourses();
+    initMap();
+    getUserCurrentLocation();
 };
 function getCourses(){
     var dt=new Date().getTime();
@@ -54,6 +55,7 @@ function initMap(){
 function getUserCurrentLocation(){
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
+        getCourses();
     } else {
         messageBox("No Location Found","Seems like your browser doesn't support fetching locations.");
     }
