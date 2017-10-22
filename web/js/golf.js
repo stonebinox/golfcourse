@@ -39,7 +39,7 @@ function showCourses(){
             var latitude=course.course_lat;
             var longitude=course.course_lon;
             var position=new google.maps.LatLng(latitude, longitude);
-            showPosition(position);
+            setMarker(position);
         }
     }
 }
@@ -75,6 +75,9 @@ function showPosition(position){
         mapTypeId: google.maps.MapTypeId.ROAD
     }
     map = new google.maps.Map(document.getElementById("mapcontent"), mapOptions);
+    setMarker(position);
+}
+function setMarker(position){
     var marker = new google.maps.Marker({position: position});
     marker.setMap(map);
 }
