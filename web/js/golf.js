@@ -39,9 +39,6 @@ app.controller("map",function($scope,$compile,$http){
         $.ajax({
             url:"getCourses",
             method: "GET",
-            data: {
-                dt: dt
-            },
             error: function(xhr,stat,err){
                 messageBox("Problem","Something went wrong while getting courses. Please try again in a bit. This is the error we see: "+err,0);
             },
