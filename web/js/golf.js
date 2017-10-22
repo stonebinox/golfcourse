@@ -35,31 +35,39 @@ app.controller("map",function($scope,$compile,$http){
         marker.setMap($scope.map);
     };
     $scope.getCourses=function(){
-        $http.get("getCourses")
-        .then(function success(response){
-            if((response!="")&&(response!=null)&&(response!=undefined)){
-                if(response=="NO_COURSES_FOUND"){
-                    //do nothing
+        var dt=new Date().getTime();
+        $.ajax({
+            url:"getCourses",
+            method: "GET",
+            data: {
+                dt: dt
+            },
+            error: function(xhr,stat,err){
+                messageBox("Problem","Something went wrong while getting courses. Please try again in a bit. This is the error we see: "+err,0);
+            },
+            success:function(responseText){
+                console.log(responseText);
+                if((responseText!="")&&(responseText!=null)&&(responseText!=undefined)&&(responseText!="INVALID_PARAMETERS")){
+                    if(responseText=="NO_COURSES_FOUND"){
+
+                    }
+                    else{
+                        responseText=JSON.parse(responseText);
+                        $scope.courseArray=responseText.slice();  
+                        $scope.showCourses();
+                    }
                 }
                 else{
-                    response=JSON.parse(response);
-                    $scope.courseArray=response.slice();  
-                    $scope.showCourses();
+                    messageBox("Problem","Something went wrong while getting courses. Please try again in a bit. This is the error we see: "+err,0);
                 }
             }
-            else{
-                messageBox("Problem","Something went wrong while loading courses. Please try again later.");
-            }
-        }, function(response){
-            console.log(response);
-            messageBox("Problem","Something went wrong while loading courses. Please try again later. This is the error we see: "+response);
         });
     };
     $scope.showCourses=function(){
         if($scope.courseArray.length>0){
             for(var i=0;$scope.courseArray.length;i++){
                 var course=$scope.courseArray[i];
-
+                console.log(course);
             }
         }
     };

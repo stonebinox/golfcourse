@@ -22,10 +22,10 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => array(
       'driver' => 'pdo_mysql',
-      'dbname' => 'heroku_db2',
-      'user' => 'remoteuser',
-      'password' => 'adminspin#123',
-      'host'=> "40.115.53.137",
+      'dbname' => 'heroku_bc01d6c27e92b76',
+      'user' => 'ba53d3edafdd3c',
+      'password' => '04a69937',
+      'host'=> "us-cdbr-iron-east-05.cleardb.net",
     )
   ));
 
