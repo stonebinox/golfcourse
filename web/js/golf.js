@@ -117,9 +117,9 @@ function searchCourses(val){
                 var li=document.createElement("a");
                 $(li).addClass("list_group_item");
                 $(li).attr("href","#");
-                $(li).onclick=function(){
+                $(li).click(function(){
                     showPosition(position,courseName);
-                };
+                });
                 $(li).html(courseName);
                 $(ul).append(li);
             }
