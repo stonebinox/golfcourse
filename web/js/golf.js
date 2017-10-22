@@ -162,6 +162,7 @@ function getProducts(){
                         $(li).append(a);
                         $("#productlist").append(li);
                     }
+                    console.log($("#productlist").html());
                     //console.log(ul);
                     //$("#productlist").append(ul);
                 }
