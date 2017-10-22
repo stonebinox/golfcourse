@@ -104,15 +104,16 @@ function searchCourses(val){
             document.getElementById("results").setAttribute("open","true");
             var div=document.createElement("div");
             $(div).addClass("container-fluid");
-            var ul=document.createElement("ul");
+            var ul=document.createElement("div");
             $(ul).addClass("list-group");
             for(var i=0;i<searchResults.length;i++){
                 var pos=searchResults[i];
                 var course=courseArray[pos];
                 var courseID=course.idcourse_master;
                 var courseName=course.course_name;
-                var li=document.createElement("li");
+                var li=document.createElement("a");
                 $(li).addClass("list_group_item");
+                $(li).attr("href","#");
                 $(li).html(courseName);
                 $(ul).append(li);
             }
