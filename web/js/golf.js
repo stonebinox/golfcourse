@@ -36,8 +36,7 @@ function showCourses(){
         console.log(courseArray);
         for(var i=0;courseArray.length;i++){
             var course=courseArray[i];
-            var courseID=course.idcourse_master;
-            var courseName=course.course_name;
+            console.log(course);
 
         }
     }
