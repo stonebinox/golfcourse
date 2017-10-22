@@ -38,6 +38,11 @@ function showCourses(){
             var course=courseArray[i];
             var courseID=course.idcourse_master;
             var courseName=course.course_name;
+            var latitude=course.course_lat;
+            var longitude=course.course_lon;
+            var position=new google.maps.LatLng(latitude, longitude);
+            console.log(position);
+            //showPosition(position);
 
         }
     }
