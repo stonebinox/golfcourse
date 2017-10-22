@@ -101,7 +101,6 @@ function searchCourses(val){
         }
         $("#results").html('');
         if(searchResults.length>0){
-            console.log("here");
             document.getElementById("results").setAttribute("open","true");
             var ul=document.createElement("ul");
             $(ul).addClass("list-group");
