@@ -65,6 +65,7 @@ app.controller("map",function($scope,$compile,$http){
     };
     $scope.showCourses=function(){
         if($scope.courseArray.length>0){
+            console.log($scope.courseArray);
             for(var i=0;$scope.courseArray.length;i++){
                 var course=$scope.courseArray[i];
 
