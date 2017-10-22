@@ -111,9 +111,15 @@ function searchCourses(val){
                 var course=courseArray[pos];
                 var courseID=course.idcourse_master;
                 var courseName=course.course_name;
+                var lat=course.course_lat;
+                var lon=course.course_lon;
+                var position=new google.maps.LatLng(lat, lon);
                 var li=document.createElement("a");
                 $(li).addClass("list_group_item");
                 $(li).attr("href","#");
+                $(li).onclick=function(){
+                    showPosition(position,courseName);
+                };
                 $(li).html(courseName);
                 $(ul).append(li);
             }
