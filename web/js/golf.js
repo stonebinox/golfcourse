@@ -39,7 +39,7 @@ function showCourses(){
             var latitude=course.course_lat;
             var longitude=course.course_lon;
             var position=new google.maps.LatLng(latitude, longitude);
-            setMarker(position);
+            setMarker(position,courseName);
         }
     }
 }
@@ -65,22 +65,27 @@ function getPosition(position){
     var latitude=position.coords.latitude;
     var longitude=position.coords.longitude;
     center=new google.maps.LatLng(latitude, longitude);
-    showPosition(center);
+    showPosition(center,"You");
 }
-function showPosition(position){
-    console.log(position);
+function showPosition(position,content){
     var mapOptions = {
         center: position,
         zoom: 13,
         mapTypeId: google.maps.MapTypeId.ROAD
     }
     map = new google.maps.Map(document.getElementById("mapcontent"), mapOptions);
-    setMarker(position);
+    setMarker(position,content);
 }
-function setMarker(position){
-    console.log(position);
+function setMarker(position,content){
+    console.log(position,content);
     var marker = new google.maps.Marker({position: position});
     marker.setMap(map);
+    google.maps.event.addListener(marker, 'click', (function(marker) {
+        return function() {
+          infowindow.setContent(content);
+          infowindow.open(map, marker);
+        }
+      })(marker));
 }
 function searchCourses(val){
     var search=$.trim(val);
