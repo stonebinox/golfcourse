@@ -59,23 +59,26 @@ function initMap(){
 }
 function getUserCurrentLocation(){
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(getPosition);
         getCourses();
     } else {
         messageBox("No Location Found","Seems like your browser doesn't support fetching locations.");
     }
 }
-function showPosition(position){
+function getPosition(position){
     var latitude=position.coords.latitude;
     var longitude=position.coords.longitude;
     center=new google.maps.LatLng(latitude, longitude);
+    showPosition(center);
+}
+function showPosition(position){
     var mapOptions = {
-        center: center,
+        center: position,
         zoom: 13,
         mapTypeId: google.maps.MapTypeId.ROAD
     }
     map = new google.maps.Map(document.getElementById("mapcontent"), mapOptions);
-    var marker = new google.maps.Marker({position: center});
+    var marker = new google.maps.Marker({position: position});
     marker.setMap(map);
 }
 function searchCourses(val){
