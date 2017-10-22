@@ -14,7 +14,6 @@ function getCourses(){
             messageBox("Problem","Something went wrong while getting courses. Please try again in a bit. This is the error we see: "+err,0);
         },
         success:function(responseText){
-            console.log(responseText);
             if((responseText!="")&&(responseText!=null)&&(responseText!=undefined)&&(responseText!="INVALID_PARAMETERS")){
                 if(responseText=="NO_COURSES_FOUND"){
                     //do nothing
@@ -33,7 +32,6 @@ function getCourses(){
 }
 function showCourses(){
     if(courseArray.length>0){
-        console.log(courseArray);
         for(var i=0;i<courseArray.length;i++){
             var course=courseArray[i];
             var courseID=course.idcourse_master;
@@ -70,6 +68,7 @@ function getPosition(position){
     showPosition(center);
 }
 function showPosition(position){
+    console.log(position);
     var mapOptions = {
         center: position,
         zoom: 13,
