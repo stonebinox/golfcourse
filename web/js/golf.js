@@ -1,6 +1,6 @@
 var app=angular.module("golf",[]);
 app.controller("map",function($scope,$compile,$http){
-    $scope.courseArray=[];
+    var courseArray=[];
     $scope.center=new google.maps.LatLng(51.5, -0.12);
     $scope.map=null;
     $scope.initMap=function(){
