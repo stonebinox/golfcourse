@@ -65,7 +65,9 @@ h1{
     width:25%;
     height:0;
     background:rgba(255,255,255,0.8);
+    overflow:hidden;
 }
 #results[open="true"]{
     height:auto;
+    overflow:auto;
 }

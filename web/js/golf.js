@@ -103,7 +103,7 @@ function searchCourses(val){
         if(searchResults.length>0){
             document.getElementById("results").setAttribute("open","true");
             var div=document.createElement("div");
-            $(div).addClass("container");
+            $(div).addClass("container-fluid");
             var ul=document.createElement("ul");
             $(ul).addClass("list-group");
             for(var i=0;i<searchResults.length;i++){
