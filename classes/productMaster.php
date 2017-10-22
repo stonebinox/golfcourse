@@ -47,6 +47,7 @@ class productMaster
         $app=$this->app;
         if($this->productValid)
         {
+            $productID=$this->product_id;
             $pm="SELECT * FROM product_master WHERE idproduct_master='$productID'";
             $pm=$app['db']->fetchAssoc($pm);
             if(($pm!="")&&($pm!=NULL))
