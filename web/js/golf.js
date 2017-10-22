@@ -78,6 +78,7 @@ function showPosition(position,content){
 }
 function setMarker(position,content){
     console.log(position,content);
+    var infowindow = new google.maps.InfoWindow();
     var marker = new google.maps.Marker({position: position});
     marker.setMap(map);
     google.maps.event.addListener(marker, 'click', (function(marker) {
