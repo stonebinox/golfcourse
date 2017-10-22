@@ -91,6 +91,7 @@ function setMarker(position,content){
 function searchCourses(val){
     var search=$.trim(val);
     if(search!=""){
+        $("#results").html('');
         var searchResults=[];
         for(var i=0;i<courseArray.length;i++){
             var course=courseArray[i];
