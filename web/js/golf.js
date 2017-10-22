@@ -16,7 +16,6 @@ app.controller("map",function($scope,$compile,$http){
     $scope.getUserCurrentLocation=function(){
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition($scope.showPosition);
-            $scope.getCourses();
         } else {
             messageBox("No Location Found","Seems like your browser doesn't support fetching locations.");
         }
@@ -33,6 +32,7 @@ app.controller("map",function($scope,$compile,$http){
         $scope.map = new google.maps.Map(document.getElementById("mapcontent"), mapOptions);
         var marker = new google.maps.Marker({position: $scope.center});
         marker.setMap($scope.map);
+        $scope.getCourses();
     };
     $scope.getCourses=function(){
         var dt=new Date().getTime();
