@@ -67,7 +67,7 @@ app.controller("map",function($scope,$compile,$http){
         if($scope.courseArray.length>0){
             for(var i=0;$scope.courseArray.length;i++){
                 var course=$scope.courseArray[i];
-                console.log(course);
+
             }
         }
     };
