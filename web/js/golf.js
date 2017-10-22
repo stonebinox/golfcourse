@@ -143,6 +143,7 @@ function getProducts(){
             messageBox("Problem","Something went wrong while getting products. Please try again in a bit. This is the error we see: "+err,0);
         },
         success:function(responseText){
+            console.log(responseText);
             if((responseText!="")&&(responseText!=null)&&(responseText!=undefined)&&(responseText!="INVALID_PARAMETERS")){
                 if(responseText=="NO_PRODUCTS_FOUND"){
                     //do nothing
