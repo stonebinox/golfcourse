@@ -149,8 +149,18 @@ function getProducts(){
                 }
                 else{
                     responseText=JSON.parse(responseText);
-                    /*var ul=document.createElement("ul");
-                    $(ul).addClass("dropdown-menu");*/
+                    var mainLI=document.createElement("li");
+                    $(mainLI).addClass("dropdown");
+                        var mainA=document.createElement("a");
+                        $(mainA).addClass("dropdown-toggle");
+                        $(mainA).attr("data-toggle","dropdown");
+                        $(mainA).attr("href","#");
+                        $(mainA).html("Products&nbsp;");
+                        var span=document.createElement("span");
+                        $(span).addClass("caret");
+                        $(mainA).append(span);
+                    var ul=document.createElement("ul");
+                    $(ul).addClass("dropdown-menu");
                     for(var i=0;i<responseText.length;i++){
                         var product=responseText[i];
                         var productID=product.idproduct_master;
@@ -160,11 +170,11 @@ function getProducts(){
                         $(a).attr("href","#");
                         $(a).html(productName);
                         $(li).append(a);
-                        $("#productlist").append(li);
+                        $(ul).append(li);
                     }
-                    console.log($("#productlist").html());
-                    //console.log(ul);
-                    //$("#productlist").append(ul);
+                    $(mainA).append(ul);
+                    $(mainLI).append(mainA);
+                    $("#productlist").append(mainLI);
                 }
             }
             else{
