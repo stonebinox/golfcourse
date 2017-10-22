@@ -95,7 +95,7 @@ function searchCourses(val){
         for(var i=0;i<courseArray.length;i++){
             var course=courseArray[i];
             var courseName=course.course_name;
-            if(courseName.indexOf(search)!=-1){
+            if(courseName.toLowerCase().indexOf(search.toLowerCase())!=-1){
                 searchResults.push(i);                
             }
         }
