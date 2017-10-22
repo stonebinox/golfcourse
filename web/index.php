@@ -65,4 +65,18 @@ $app->get('/searchCourses',function() use($app){
     }
 });
 
+$app->get('/getProducts',function() use($app){
+    require("../classes/productMaster.php");
+    $productObj=new productMaster;
+    $products=$productObj->getProducts();
+    if(is_array($products))
+    {
+        return json_encode($products);
+    }
+    else
+    {
+        return $products;
+    }
+});
+
 $app->run();

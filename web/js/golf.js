@@ -4,6 +4,7 @@ var map=null;
 window.onload=function(){
     initMap();
     getUserCurrentLocation();
+    getProducts();
 };
 function getCourses(){
     var dt=new Date().getTime();
@@ -77,7 +78,6 @@ function showPosition(position,content){
     setMarker(position,content);
 }
 function setMarker(position,content){
-    console.log(position,content);
     var infowindow = new google.maps.InfoWindow();
     var marker = new google.maps.Marker({position: position});
     marker.setMap(map);
@@ -133,4 +133,41 @@ function searchCourses(val){
     else{
         $("#results").removeAttr("open");
     }
+}
+function getProducts(){
+    var dt=new Date().getTime();
+    $.ajax({
+        url:"getProducts",
+        method: "GET",
+        error: function(xhr,stat,err){
+            messageBox("Problem","Something went wrong while getting products. Please try again in a bit. This is the error we see: "+err,0);
+        },
+        success:function(responseText){
+            if((responseText!="")&&(responseText!=null)&&(responseText!=undefined)&&(responseText!="INVALID_PARAMETERS")){
+                if(responseText=="NO_PRODUCTS_FOUND"){
+                    //do nothing
+                }
+                else{
+                    responseText=JSON.parse(responseText);
+                    var ul=document.createElement("ul");
+                    $(ul).addClass("dropdown-menu");
+                    for(var i=0;i<responseText.length;i++){
+                        var product=responseText[i];
+                        var productID=product.idproduct_master;
+                        var productName=product.product_name;
+                        var li=document.createElement("li");
+                        var a=document.createElement("a");
+                        $(a).attr("href","#");
+                        $(a).html(productName);
+                        $(li).append(a);
+                        $(ul).append(li);
+                    }
+                    $("#productlist").html(ul);
+                }
+            }
+            else{
+                messageBox("Problem","Something went wrong while getting products. Please try again in a bit. This is the error we see: "+err,0);
+            }
+        }
+    });
 }
