@@ -91,7 +91,6 @@ function setMarker(position,content){
 function searchCourses(val){
     var search=$.trim(val);
     if(search!=""){
-        $("#results").html('');
         var searchResults=[];
         for(var i=0;i<courseArray.length;i++){
             var course=courseArray[i];
@@ -100,7 +99,9 @@ function searchCourses(val){
                 searchResults.push(i);                
             }
         }
+        $("#results").html('');
         if(searchResults.length>0){
+            console.log("here");
             document.getElementById("results").setAttribute("open","true");
             var ul=document.createElement("ul");
             $(ul).addClass("list-group");
