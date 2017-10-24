@@ -72,10 +72,11 @@ class courseMaster
         {
             $cm="SELECT idcourse_master FROM course_master WHERE stat='1' ORDER BY idcourse_master DESC LIMIT $offset,100";
             $courseArray=array();
-            $cm=$app['db']->fetchAssoc($cm);
+            $cm=$app['db']->fetchAll($cm);
             for($i=0;$i<count($cm);$i++)
             {
-                $courseID=$cm['idcourse_master'];
+                $course=$cm[$i];
+                $courseID=$course['idcourse_master'];
                 $this->__construct($courseID);
                 $course=$this->getCourse();
                 if(is_array($course))

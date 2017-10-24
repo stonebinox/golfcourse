@@ -68,11 +68,12 @@ class productMaster
     {
         $app=$this->app;
         $pm="SELECT idproduct_master FROM product_master WHERE stat='1' ORDER BY idproduct_master DESC";
-        $pm=$app['db']->fetchAssoc($pm);
+        $pm=$app['db']->fetchAll($pm);
         $productArray=array();
         for($i=0;$i<count($pm);$i++)
         {
-            $productID=$pm['idproduct_master'];
+            $product=$pm[$i];
+            $productID=$product['idproduct_master'];
             $this->__construct($productID);
             $product=$this->getProduct();
             if(is_array($product))
